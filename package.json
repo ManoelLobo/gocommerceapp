@@ -8,6 +8,7 @@
     "apiserver": "json-server server.json"
   },
   "dependencies": {
+    "apisauce": "^0.14.3",
     "react": "16.2.0",
     "react-native": "0.53.2"
   },
