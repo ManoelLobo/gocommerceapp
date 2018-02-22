@@ -5,5 +5,4 @@ const styles = StyleSheet.create({
   ...general,
 });
 
-
 export default styles;

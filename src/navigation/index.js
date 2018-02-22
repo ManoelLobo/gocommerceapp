@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { addNavigationHelpers } from 'react-navigation';
 import { connect } from 'react-redux';
-
 import Routes from './routes';
 
 const Navigator = ({ dispatch, nav }) => (
