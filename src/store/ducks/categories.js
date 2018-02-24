@@ -35,6 +35,7 @@ export const failure = () => ({
   data: [],
   loading: false,
   error: true,
+  active: 0,
 });
 
 export const setActive = (state, action) => ({
