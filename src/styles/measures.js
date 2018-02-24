@@ -1,9 +1,14 @@
-import { Platform } from 'react-native';
+import { Dimensions, Platform } from 'react-native';
+
+const { width, height } = Dimensions.get('window');
 
 export default {
   statusBarHeight: (Platform.OS === 'ios') ? 20 : 0,
   bar: 54,
   menuBar: 44,
+
+  screenWidth: width < height ? width : height,
+  screenHeight: width < height ? height : width,
 
   baseSpacing: 10,
 

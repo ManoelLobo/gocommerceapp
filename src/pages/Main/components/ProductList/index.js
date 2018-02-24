@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { ActivityIndicator, Text, View } from 'react-native';
+import { ActivityIndicator, Text, View, FlatList } from 'react-native';
 
 import { connect } from 'react-redux';
 
-// import styles from './styles';
+import ProductCard from './components/ProductCard';
+
+import styles from './styles';
 
 class ProductList extends Component {
   static propTypes = {
@@ -20,15 +22,20 @@ class ProductList extends Component {
 
   renderProducts = () => (
     this.props.products.length ?
-      this.props.products.map(product =>
-        <Text key={product.id}>{product.name}, {product.brand}</Text>) :
+      <FlatList
+        data={this.props.products}
+        keyExtractor={product => String(product.id)}
+        renderItem={({ item }) => <ProductCard product={item} />}
+        numColumns={2}
+        contentContainerStyle={styles.container}
+      /> :
       <Text>Não há produtos disponíveis nesta seção.</Text>
   )
 
   render() {
     return (
       <View>
-        {this.props.loading ?
+        { this.props.loading ?
           <ActivityIndicator size="small" /> :
           this.renderProducts()
         }
