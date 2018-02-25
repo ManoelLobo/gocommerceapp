@@ -27,14 +27,13 @@ class ProductList extends Component {
         keyExtractor={product => String(product.id)}
         renderItem={({ item }) => <ProductCard product={item} />}
         numColumns={2}
-        contentContainerStyle={styles.container}
       /> :
       <Text>Não há produtos disponíveis nesta seção.</Text>
   )
 
   render() {
     return (
-      <View>
+      <View style={styles.container}>
         { this.props.loading ?
           <ActivityIndicator size="small" /> :
           this.renderProducts()
