@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, measures } from 'styles';
+import { colors, measures, typography } from 'styles';
 
 const styles = StyleSheet.create({
   headerContainer: {
@@ -16,7 +16,9 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  leftSection: {
+  back: {
+    fontSize: typography.bigger,
+    margin: measures.baseSpacing,
   },
 });
 
