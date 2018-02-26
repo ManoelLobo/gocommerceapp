@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { View, Text } from 'react-native';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 
 import Header from 'components/Header';
+import ProductDetail from './components/ProductDetail';
 
 import styles from './styles';
 
@@ -25,7 +26,7 @@ class Detail extends Component {
     return (
       <View style={styles.container}>
         <Header title="Detalhes do produto" backEnabled />
-        <Text>{product.id}, {product.name}</Text>
+        <ProductDetail product={product} addToCart={this.addToCart} />
       </View>
     );
   }
