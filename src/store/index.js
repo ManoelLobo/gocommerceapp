@@ -1,4 +1,5 @@
-import { combineReducers } from 'redux';
+import { persistCombineReducers } from 'redux-persist';
+import storage from 'redux-persist/es/storage';
 
 // Reducers
 import navReducer from 'navigation/reducer';
@@ -11,12 +12,18 @@ import rootSaga from './sagas';
 
 
 export default () => {
-  const rootReducer = combineReducers({
+  const reducers = {
     nav: navReducer,
     categories,
     categoryProducts,
     cart,
-  });
+  };
+
+  const rootReducer = persistCombineReducers({
+    key: '@GoCommerce',
+    storage,
+    whitelist: ['cart'],
+  }, reducers);
 
   return configureStore(rootReducer, rootSaga);
 };
