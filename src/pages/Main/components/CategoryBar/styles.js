@@ -25,6 +25,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
+  loading: {
+    backgroundColor: colors.white,
+  },
+
   activeTitle: {
   },
 

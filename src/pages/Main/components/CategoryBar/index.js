@@ -56,7 +56,7 @@ class CategoryBar extends Component {
     return (
       <View style={styles.container}>
         { this.props.loading ?
-          <ActivityIndicator size="small" color="#FFF" /> :
+          <ActivityIndicator size="small" style={styles.loading} /> :
           this.renderList()
         }
       </View>
