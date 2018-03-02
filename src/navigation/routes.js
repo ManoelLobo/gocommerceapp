@@ -17,9 +17,9 @@ const Routes = TabNavigator({
   Main: { screen: ProductRoutes },
   Cart: { screen: Cart },
 }, {
-  swipeEnabled: true,
+  swipeEnabled: false,
   animationEnabled: false,
-  lazy: false, // BUG? lazy loading not working
+  lazy: true, // BUG? lazy loading not working on react-navigation above 1.0.3
   tabBarPosition: 'bottom',
   tabBarComponent: Footer,
 });
