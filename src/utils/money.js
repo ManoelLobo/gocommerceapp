@@ -1,4 +1,4 @@
 const brl = money =>
-  `R$${String(money).replace('.', ',')}`;
+  `R$${String(money.toFixed(2)).replace('.', ',')}`;
 
 export { brl };
