@@ -5,6 +5,7 @@ const styles = StyleSheet.create({
   headerContainer: {
     flexDirection: 'row',
     backgroundColor: colors.white,
+    paddingTop: measures.statusBarHeight,
     height: measures.bar + measures.statusBarHeight,
     alignItems: 'center',
     justifyContent: 'space-between',
