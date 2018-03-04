@@ -5,7 +5,8 @@ const styles = StyleSheet.create({
   cartItemContainer: {
     flexDirection: 'row',
     backgroundColor: colors.white,
-    margin: measures.baseSpacing,
+    marginHorizontal: measures.baseSpacing,
+    marginTop: measures.baseSpacing,
     padding: measures.baseSpacing,
     borderRadius: measures.baseSpacing / 2,
   },

@@ -27,7 +27,7 @@ class CartItem extends Component {
   updateQuantity = (quantity) => {
     const clearQuantity = quantity.replace(/[^0-9]/g, '') * 1;
 
-    if (clearQuantity === this.props.quantity || clearQuantity === 0) return;
+    if (clearQuantity === this.props.quantity) return;
 
     this.props.changeQuantity(this.props.product.id, clearQuantity);
   }

@@ -6,6 +6,7 @@ export default {
   statusBarHeight: (Platform.OS === 'ios') ? 20 : 0,
   bar: 54,
   menuBar: 44,
+  totalBar: 100,
 
   screenWidth: width < height ? width : height,
   screenHeight: width < height ? height : width,
