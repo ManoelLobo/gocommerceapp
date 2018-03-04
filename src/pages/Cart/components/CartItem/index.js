@@ -1,58 +1,70 @@
 import React, { Component } from 'react';
-import { Image, View, Text } from 'react-native';
+import PropTypes from 'prop-types';
+import {
+  Image,
+  Text,
+  TextInput,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import Icon from 'react-native-vector-icons/FontAwesome';
 import { connect } from 'react-redux';
 
-import api from 'services/api';
+import CartActions from 'store/ducks/cart';
+
+import { brl } from 'utils/money';
 
 import styles from './styles';
 
 class CartItem extends Component {
-  state = {
-    id: this.props.productId,
-    quantity: this.props.quantity,
-    name: '',
-    brand: '',
-    price: '',
-    image: '',
-    loaded: false,
+  static propTypes = {
+    quantity: PropTypes.number.isRequired,
+    product: PropTypes.shape().isRequired,
+    remove: PropTypes.func.isRequired,
+    changeQuantity: PropTypes.func.isRequired,
   }
 
-  componentWillMount = async () => {
-    const productQuery = await api.get(`/products/${this.props.productId}`);
+  updateQuantity = (quantity) => {
+    const clearQuantity = quantity.replace(/[^0-9]/g, '') * 1;
 
-    if (productQuery.ok) {
-      const {
-        name,
-        brand,
-        price,
-        image,
-      } = productQuery.data;
+    if (clearQuantity === this.props.quantity || clearQuantity === 0) return;
 
-      this.setState({
-        name, brand, price, image, loaded: true,
-      });
-    }
-  }
-
-  renderCartItem() {
-    return (
-      <View style={styles.cartItemContainer}>
-        <Image source={{ uri: this.state.image }} style={styles.cartImage} />
-        <View style={styles.description}>
-          <Text>{this.state.name}</Text>
-          <Text>{this.state.brand}</Text>
-          <Text>{this.state.price}</Text>
-        </View>
-        <Text style={styles.quantity}>{this.state.quantity}</Text>
-      </View>
-    );
+    this.props.changeQuantity(this.props.product.id, clearQuantity);
   }
 
   render() {
-    return this.state.loaded ?
-      this.renderCartItem() :
-      null;
+    return (
+      <View style={styles.cartItemContainer}>
+        <Image source={{ uri: this.props.product.image }} style={styles.cartImage} />
+        <View style={styles.description}>
+          <Text style={styles.name}>{this.props.product.name}</Text>
+          <Text style={styles.brand}>{this.props.product.brand}</Text>
+          <Text style={styles.price}>{brl(this.props.product.price)}</Text>
+        </View>
+        <View style={styles.quantityContainer}>
+          <TextInput
+            style={styles.quantityField}
+            autoCorrect={false}
+            underlineColorAndroid="transparent"
+            keyboardType="numeric"
+            onChangeText={this.updateQuantity}
+            value={String(this.props.quantity)}
+          />
+          <TouchableOpacity
+            onPress={() => this.props.remove(this.props.product.id)}
+          >
+            <Icon style={styles.remove} name="times" />
+          </TouchableOpacity>
+        </View>
+      </View>
+    );
   }
 }
 
-export default connect()(CartItem);
+const mapDispatchToProps = dispatch => ({
+  remove: productId => dispatch(CartActions.cartRemoveProduct(productId)),
+  changeQuantity: (productId, quantity) =>
+    dispatch(CartActions.cartChangeQuantity(productId, quantity)),
+});
+
+export default connect(null, mapDispatchToProps)(CartItem);

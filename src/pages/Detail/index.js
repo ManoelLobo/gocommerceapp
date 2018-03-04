@@ -22,8 +22,8 @@ class Detail extends Component {
     cartAddProduct: PropTypes.func.isRequired,
   }
 
-  addToCart = (productId) => {
-    this.props.cartAddProduct(productId);
+  addToCart = (product) => {
+    this.props.cartAddProduct(product);
   }
 
   render() {
@@ -31,7 +31,7 @@ class Detail extends Component {
     return (
       <View style={styles.container}>
         <Header title="Detalhes do produto" backEnabled />
-        <ProductDetail product={product} addToCart={() => this.addToCart(product.id)} />
+        <ProductDetail product={product} addToCart={() => this.addToCart(product)} />
       </View>
     );
   }

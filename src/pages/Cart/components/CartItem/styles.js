@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { colors, measures } from 'styles';
+import { colors, measures, typography } from 'styles';
 
 const styles = StyleSheet.create({
   cartItemContainer: {
@@ -17,11 +17,44 @@ const styles = StyleSheet.create({
   },
 
   description: {
+    flex: 1,
     flexDirection: 'column',
     marginHorizontal: measures.baseSpacing,
   },
 
-  quantity: {},
+  name: {
+    color: colors.black,
+    fontWeight: 'bold',
+    fontSize: typography.small,
+  },
+
+  brand: {
+    color: colors.inactive,
+    fontSize: typography.tiny,
+  },
+
+  price: {
+    color: colors.secundary,
+    fontWeight: 'bold',
+    fontSize: typography.small,
+  },
+
+  quantityContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+
+  quantityField: {
+    padding: measures.baseSpacing,
+    borderRadius: measures.baseSpacing / 2,
+    borderWidth: 1,
+    borderColor: colors.background,
+    marginRight: measures.baseSpacing,
+  },
+
+  remove: {
+    fontSize: typography.regular,
+  },
 });
 
 export default styles;

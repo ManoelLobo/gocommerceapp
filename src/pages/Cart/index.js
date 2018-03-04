@@ -15,8 +15,8 @@ const Cart = ({ cart }) => (
       Object.keys(cart).map(productId => (
         <CartItem
           key={productId}
-          productId={productId}
-          quantity={cart[productId]}
+          product={cart[productId].product}
+          quantity={cart[productId].quantity}
         />
       )) :
       <Text>Vazio</Text>
