@@ -7,16 +7,24 @@ import Tab from 'components/Footer/components/Tab';
 
 const props = {
   icon: 'home',
-  active: false,
+  active: true,
   onPress: () => {},
 };
 
-describe('Testing Footer Tab', () => {
-  const createWrapper = () => shallow(<Tab
-    icon={props.icon}
-    active={props.active}
-    onPress={props.onPress}
-  />);
+describe('Testing active Footer Tab', () => {
+  const createWrapper = () =>
+    shallow(<Tab icon={props.icon} active={props.active} onPress={props.onPress} />);
+
+  it('renders as expected', () => {
+    const wrapper = createWrapper();
+
+    expect(wrapper.find(TouchableOpacity)).toHaveLength(1);
+  });
+});
+
+describe('Testing inactive Footer Tab', () => {
+  const createWrapper = () =>
+    shallow(<Tab icon={props.icon} active={!props.active} onPress={props.onPress} />);
 
   it('renders as expected', () => {
     const wrapper = createWrapper();
