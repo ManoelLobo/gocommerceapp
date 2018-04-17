@@ -5,29 +5,23 @@ import { TouchableOpacity } from 'react-native';
 
 import Tab from 'components/Footer/components/Tab';
 
-const props = {
-  icon: 'home',
-  active: true,
-  onPress: () => {},
-};
+describe('Testing Footer Tab', () => {
+  const props = {
+    icon: 'home',
+    onPress: () => {},
+  };
 
-describe('Testing active Footer Tab', () => {
-  const createWrapper = () =>
-    shallow(<Tab icon={props.icon} active={props.active} onPress={props.onPress} />);
+  const createWrapper = (isActive = true) =>
+    shallow(<Tab icon={props.icon} active={isActive} onPress={props.onPress} />);
 
-  it('renders as expected', () => {
+  it('renders active as expected', () => {
     const wrapper = createWrapper();
 
     expect(wrapper.find(TouchableOpacity)).toHaveLength(1);
   });
-});
 
-describe('Testing inactive Footer Tab', () => {
-  const createWrapper = () =>
-    shallow(<Tab icon={props.icon} active={!props.active} onPress={props.onPress} />);
-
-  it('renders as expected', () => {
-    const wrapper = createWrapper();
+  it('renders inactive as expected', () => {
+    const wrapper = createWrapper(false);
 
     expect(wrapper.find(TouchableOpacity)).toHaveLength(1);
   });
