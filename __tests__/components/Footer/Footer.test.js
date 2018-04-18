@@ -11,15 +11,19 @@ describe('Testing Footer', () => {
     navigationState: {},
     jumpToIndex: spy,
   };
+
   const createWrapper = () => shallow(<Footer {...props} />);
 
   it('renders as expected', () => {
     const wrapper = createWrapper();
 
     expect(wrapper.find(Tab)).toHaveLength(2);
+  });
+
+  it('calls the page navigation function', () => {
+    const wrapper = createWrapper();
 
     wrapper.childAt(0).simulate('press');
-    console.log(wrapper.childAt(0));
 
     expect(spy.calledOnce).toBe(true);
   });
