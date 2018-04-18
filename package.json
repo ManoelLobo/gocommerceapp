@@ -48,11 +48,8 @@
   },
   "jest": {
     "preset": "react-native",
-    "setupFiles": [
-      "<rootDir>/__tests__/setup.js"
-    ],
-    "testMatch": [
-      "<rootDir>/__tests__/**/?(*.)(spec|test).js"
-    ]
+    "setupFiles": ["<rootDir>/__tests__/setup.js"],
+    "testMatch": ["<rootDir>/__tests__/**/?(*.)(spec|test).js"],
+    "transformIgnorePatterns": ["node_modules/(?!(jest-)?react-native|react-navigation)"]
   }
 }
