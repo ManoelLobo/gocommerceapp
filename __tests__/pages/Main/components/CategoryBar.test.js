@@ -26,7 +26,6 @@ const loadingState = {
 describe('Testing CategoryBar', () => {
   const defaultStore = mockStore(initialState);
   const createWrapper = (store = defaultStore) => shallow(<CategoryBar />, { context: { store } });
-
   const createLoadingWrapper = () => createWrapper(mockStore(loadingState));
 
   it('renders loaded as expected', () => {
